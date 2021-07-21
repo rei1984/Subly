@@ -1,12 +1,21 @@
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
+type TranscribingCardProp = {
+    name: string;
+    cover: string;
+    languages: [string]
+    status: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
 //component for card being transcribed
-const TranscribingCard = ({name, cover, languages, status, createdAt, updatedAt}) => {
+const TranscribingCard = ({name, cover, languages, status, createdAt, updatedAt}: TranscribingCardProp) => {
     console.log("Found a transcribing card")
     return (
         //darken background: can only seem to darken this background cannot workout how to dynamically darken backgrounds on hover in the other cards
-        <div class= 'transcribingImg'>
+        <div className= 'transcribingImg'>
             <Card style={{ width: '25rem', height: 'auto' }}>
                 <Card.Img variant="top" src={cover}/>
                 <Card.ImgOverlay>

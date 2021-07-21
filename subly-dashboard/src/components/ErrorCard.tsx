@@ -2,8 +2,17 @@ import Card from 'react-bootstrap/Card';
 import {RiErrorWarningLine} from 'react-icons/ri';
 import Button from 'react-bootstrap/Button';
 
+type ErrorCardProps = {
+    name: string;
+    cover: string;
+    languages: [string]
+    status: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
 //component to display errored cards
-const ErrorCard = ({name, cover, languages, status, createdAt, updatedAt}) => {
+const ErrorCard = ({name, cover, languages, status, createdAt, updatedAt}: ErrorCardProps) => {
     console.log("Found an error card")
     return (
         <>
@@ -14,8 +23,8 @@ const ErrorCard = ({name, cover, languages, status, createdAt, updatedAt}) => {
                         An error occurred while processing your file. Delete file to try again, and report issue if problem persists.
                     </Card.Text>
                     {/* buttons to delete or report that would be connected to some other scripts */}
-                    <Button style={{ width: '33%', height: '44px', marginRight: '20px', marginLeft: '23%'}} variant= 'light' as="Delete" type="button">Delete File</Button>
-                    <Button style={{ width: '33%', height: '44px'}} variant= 'primary' as="Report" type="button">Send Report</Button>
+                    <Button style={{ width: '33%', height: '44px', marginRight: '20px', marginLeft: '23%'}} variant= 'light' type="button">Delete File</Button>
+                    <Button style={{ width: '33%', height: '44px'}} variant= 'primary' type="button">Send Report</Button>
                 </Card.Body>
 
                 <Card.Body>

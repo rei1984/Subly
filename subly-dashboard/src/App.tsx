@@ -4,12 +4,13 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MediumTiles from './components/MediumTiles'
+import {Medium} from './Medium'
 
 
 function App() {
 
-  const [mediums, setMediums] = useState([])
-  const [sortBy, setSortBy] = useState('Sorting by: Name')
+  const [mediums, setMediums] = useState<Medium[]>([])
+  const [sortBy, setSortBy] = useState<string>('Sorting by: Name')
 
   //on load of app fetch the mediums from the endpoint
   useEffect(() => {
@@ -29,17 +30,17 @@ function App() {
   }
 
   //sort by the sortby state
-  const sort = (mediums) => {
+  const sort = (mediums: Medium[]) => {
     switch(sortBy) {
       case 'Sorting by: Languages': return mediums.sort((a, b) => (a.languages.length < b.languages.length) ? 1 : -1);
       case 'Sorting by: Status': return mediums.sort((a, b) => (a.status > b.status) ? 1 : -1);
-      default: return mediums.sort((a, b) => (a.name > b.name) ? 1 : -1);
+      default: return mediums.sort((a: Medium, b: Medium) => (a.name > b.name) ? 1 : -1);
     }
   }
 
   //arrange media into rows of 3
-  const mediumsArranged = (mediums) => {
-    let newMedia = [[]];
+  const mediumsArranged = (mediums: Medium[]) => {
+    let newMedia: [Medium[]] = [[]];
     let i = 0;
     let j = 0;
     for (const medium of mediums) {
@@ -60,7 +61,7 @@ function App() {
     <div>
       <Container>
         {/* Sorting by Name, LangaugeNo, and Status */}
-        <DropdownButton id="dropdown-item-button" title={sortBy} className="format" style={{position: 'flex', marginLeft: '80%', marginRight: '10%'}}>
+        <DropdownButton id="dropdown-item-button" title={sortBy} className="format" style={{marginLeft: '80%', marginRight: '10%'}}>
             <Dropdown.Item as="button"><div onClick={(e) => (setSortBy("Sorting by: Name"))}>Name</div></Dropdown.Item>
             <Dropdown.Item as="button"><div onClick={(e) => (setSortBy("Sorting by: Languages"))}>Languages</div></Dropdown.Item>
             <Dropdown.Item as="button"><div onClick={(e) => (setSortBy("Sorting by: Status"))}>Status</div></Dropdown.Item>
