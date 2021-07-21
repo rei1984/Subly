@@ -9,6 +9,7 @@ Built with React and react-bootstrap.
 
 Build folder contains a final build that can be run with the command: 
 
+`npm run build`
 `serve -s build`
 
 when in the main subly-dashboard directory.
